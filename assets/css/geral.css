@@ -1,0 +1,95 @@
+/*  import google fonts */
+
+/* @import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap'); */
+
+body, html{
+    letter-spacing: 0.025em;
+    font-family: 'Ubuntu', sans-serif;
+    /* font-family: 'Poppins', sans-serif; */
+    width: 100%;
+    margin: 0px;
+}
+#logo_header{
+	width: 120px;
+}
+
+#container_geral{
+    margin-top: 74px;
+}
+  
+
+#content-sidebar-left {
+background-image: linear-gradient(to left, rgba(249, 103, 67, 1), rgba(232, 173, 88, 1));
+min-height: 90vh;
+size: 0vmin;
+}
+
+#content-section-central {
+background-color: #fff;
+min-height: 90vh;
+}
+.b-img{
+box-shadow: 0 0px 10px rgba(0, 0, 0, 0.25);
+}
+.caption-img{
+font-size: 15px !important;
+color: #8b2323;
+margin: 9px 0px;
+}
+a{
+    text-decoration: none;
+}
+
+
+/*HOME*/
+
+/*IMAGEM DE ESTUDIO */
+
+#estudio img{
+	width: 300px;
+	margin: 10px 0 ;
+}
+/*RESULTADO DE CAMPO DE PESQUISA*/
+
+#result_search{
+    background: #fff;
+}
+#result_search li{
+	list-style: none;
+}
+#result_search li a{
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+}
+#result_search li a img{
+	height: 30px;
+}
+
+
+
+/*ESTILO DE ICONs*/
+
+.fa-icon{
+
+	font-size: 15px;
+	color: red;
+}
+.box-icon{
+	display: flex;
+	justify-content: space-between;
+	margin-top: 2px;
+}
+.tabela-tr{
+	display: flex;
+	justify-content: space-between;
+}
+.fa-edit {
+	color: blue !important;
+}
+
+/*ESTILO DE AUDIO*/
+#audio{
+    height: 30px;
+}

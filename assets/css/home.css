@@ -1,0 +1,33 @@
+/* Depois nav bar */
+#depois-nav{
+    padding-top: 100px;
+    padding-bottom: 50px;
+    width: 100%;
+    background-image: linear-gradient(to left, rgba(249, 103, 67, 1), rgba(232, 173, 88, 1));
+}
+/* Equipamentos */
+#equipamentos{
+    width: 100%;
+    background-image: linear-gradient(to left, rgb(56, 128, 161), rgb(146, 136, 76));
+}
+/* Estudio */
+#estudio{
+    width: 100%;
+}
+/* Musicas populares */
+#musicas-populares{
+    width: 100%;
+}
+/* Musicas recentes */
+#musicas-recentes{
+    width: 100%;
+}
+/* Musicas mais baixadas */
+#musicas-mais-baixadas{
+    width: 100%;
+}
+
+
+/* 
+Rensposive
+*/
