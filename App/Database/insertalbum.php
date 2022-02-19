@@ -28,7 +28,9 @@ if(isset($_POST["acao"]) && (isset($_POST["nameAlbum"]) && $_POST["nameAlbum"] !
 		}
 	} elseif($_POST["foto_Album"]) {
 		$novaFoto = $_POST["foto_Album"];
-	}
+	}else{
+			$novaFoto = "photo_padrao.png";
+		}
   //RECOLHENDO OS DADOS
 
 	$idArtista = $_POST["idArtista"];

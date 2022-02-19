@@ -38,7 +38,7 @@ echo '     </select>
         </div>
          <div class="my-2">
           <label for="" class="form-label">Imagem</label>
-          <input type="file" class="form-control" name="FotoArtista"placeholder="Adicione foto artista" required title="Artista">
+          <input type="file" class="form-control" name="FotoArtista"placeholder="Adicione foto artista"  title="Artista">
         </div>
           <input type="hidden" class="form-control" name="idUser" value="1"required>
         <button class="btn btn-danger" name="acao" value="cadastraArtista">Registrar</button>

@@ -42,7 +42,7 @@ echo '
         </div>
         <div class="my-2">
           <label for="" class="form-label">imagem</label>
-          <input type="file" class="form-control" name="arq_musica_foto" title="carrege a imagem" required>
+          <input type="file" class="form-control" name="arq_musica_foto" title="carrege a imagem">
         </div>
           <input type="hidden" class="form-control" name="idUser" value="1"required>
         <button class="btn btn-danger" name="acao" value="cadastraMusica">Registrar</button>

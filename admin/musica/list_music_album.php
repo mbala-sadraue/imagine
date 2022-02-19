@@ -41,10 +41,10 @@ echo $head;
   echo '
   <div class="container">
   <div class="row">
-    <div class="col-lg-8 offset-lg-2">
+    <div class="col-lg-10 offset-lg-1">
       <h3 class="text-center"> '.$nomeAlbum.' de  '.$nomeArtista.'</h3>
       <a href="create_new_music.php?id_album=' . $idAlbum . '&nomeAlbum=' . $nomeAlbum . '
-					&id_artista=' . $idArt . '&nome_artista=' . $nomeArtista . '" >+ nova musica</a>';
+					&id_artista=' . $idArt . '&nome_artista=' . $nomeArtista . '" >+ Nova música</a>';
 		
       if($dadosMusicas){
       echo '
@@ -52,9 +52,10 @@ echo $head;
       <table class="table">
       	<thead>
       		<tr>	
-      			<td>Musica</td>
-            <td>Baixa</td>
-      			<td>Download</td>
+      			<td>Música</td>
+            <td>Ouvir</td>
+      			<td>Baixar</td>
+            <td>Ações</td>
 
       		</tr>
       	</thead>
@@ -66,10 +67,12 @@ echo $head;
 
   echo '
   		<tr>
-  			<td><a href="info_music_album.php?id_musica='.$dadoMusica->current()->idMusica.'&id_album='. $dadoMusica->current()->Album.'
-        ">'.$dadoMusica->current()->Titulo.'</a></td>
+        <!-- href="info_music_album.php?id_musica='.$dadoMusica->current()->idMusica.'&id_album='. $dadoMusica->current()->Album.'
+        " -->
+  			<td><a >'.$dadoMusica->current()->Titulo.'</a></td>
         <td><audio src="../../musicas/'.$dadoMusica->current()->Musica.'" controls >Ouvir</audio></td>
-  			<td><a href="../../musicas/'.$dadoMusica->current()->Musica.'" download="">Baixa</a></td>
+  			<td><a href="../../musicas/'.$dadoMusica->current()->Musica.'" download="">Baixar</a></td>
+        <td><a href="edit_music.php?id_musica='.$dadoMusica->current()->idMusica.'&id_album='.$dadoMusica->current()->Album.'&nome_artista='.$nomeArtista.'">Editar</a></td>
   		</tr>
       	';
       	 	$dadoMusica->next();
@@ -80,7 +83,7 @@ echo'
     }else{
       if($stutsUser==1){
 
-            echo '<p> Album <b/>'.$nomeAlbum.'</b> de <b>'.$nomeArtista.'</b> não tem musica. <a href="create_new_music.php?id_album='.$idAlbum.'&nomeAlbum='.$nomeAlbum.'&id_artista='.$idArt.'&nome_artista='.$nomeArtista.'" >+ nova musica</a></p>';
+            echo '<p> Album <b/>'.$nomeAlbum.'</b> de <b>'.$nomeArtista.'</b> não tem musica. <a href="create_new_music.php?id_album='.$idAlbum.'&nomeAlbum='.$nomeAlbum.'&id_artista='.$idArt.'&nome_artista='.$nomeArtista.'" >+ Nova música</a></p>';
           }
     }
 echo'

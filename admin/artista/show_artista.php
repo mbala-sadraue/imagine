@@ -24,13 +24,12 @@ echo $head;
 
   echo '
 <div class="container-fluid">
-<div class="container-fluid">
- <div class="row"> 
+ <div class="row py-4"> 
   ';
   if($dadosArtista)
     {
      echo ' 
-       <div class="col-lg-4">
+       <div class="col-12 col-md-4">
         <div>
           <img src="../../photos/capas/'.$dadosArtista["ArtistaImagem"].'" class="img-fluid b-img rounded mt-4 w-100"/>
         </div>
@@ -45,7 +44,7 @@ echo $head;
            </p>  
               
       </div>
-      <div class="col-lg-4">
+      <div class="col-12 col-md-4 mt-4 mt-md-0">
         <h3> Album <a href="../album/create_new_album.php?id_artista=' . $idArt . '&nome_artista=' . $dadosArtista["NomeArtista"] . '">+</a>
       </h3>
           <div class="row"> ';
@@ -82,7 +81,7 @@ echo $head;
     '   
     </div>
     </div>
-    <div class="col-lg-4">
+    <div class="col-12 col-md-4 mt-4 mt-md-0">
         <h3>Ep ';
         echo ($stutsUser == 1) ? '<a href="../ep/create_new_ep.php?id_artista=' . $idArt . '&nome_artista=' . $dadosArtista["NomeArtista"] . '">+</a>'
         : '';
@@ -125,8 +124,6 @@ echo $head;
               
     echo'</div>
         </div>
-    </div>
-
     </div>
     </div>
      '; 

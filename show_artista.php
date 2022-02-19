@@ -22,13 +22,13 @@ $dadosAlbum   =   $album->listarAlbumArtistaId($idArt);
 echo $head;
 
   echo '
- <div class="row"> 
+ <div class="row py-4"> 
   ';
   if($dadosArtista)
     {
      echo ' 
-       <div class="col-lg-4">
-        <div>
+       <div class="col-12 col-md-4">
+        <div> 
           <img src="photos/capas/'.$dadosArtista["ArtistaImagem"].'" class="img-fluid b-img rounded mt-4 w-100"/>
         </div>
         <h5 class="caption-img fs-2">'. $dadosArtista["NomeArtista"]. '</h5> 
@@ -45,11 +45,11 @@ echo $head;
      echo
     '       
       </div>
-      <div class="col-lg-4">
-        <h3>Album ';
+      <div class="col-12 col-md-4 mt-4 mt-md-0">
+        <h5>Album </h5>';
           echo ($stutsUser == 1) ? '<a href="admin/album/create_new_album.php?id_artista=' . $idArt . '&nome_artista=' . $dadosArtista["NomeArtista"] . '">+</a>'
             : '';
-      echo '</h3>
+      echo '</h5>
           <div class="row"> ';
               if($dadosAlbum){
                 $dadoAlbum  =new ArrayIterator($dadosAlbum);
@@ -57,7 +57,7 @@ echo $head;
                   
                 
               echo ' 
-              <div class="col-lg-4">
+              <div class="col-6 col-md-6">
                 <div>
                   <a href="list_music_album.php?id_album=' .$dadoAlbum->current()->idAlbum . '&nome_album='
                       .$dadoAlbum->current()->NomeAlbum . '&nome_artista=' .  $dadosArtista["NomeArtista"] . '&id_artista=' . $idArt . '" >
@@ -87,12 +87,12 @@ echo $head;
     '   
     </div>
     </div>
-    <div class="col-lg-4">
-        <h3>Ep ';
+    <div class="col-12 col-md-4 mt-4 mt-md-0">
+        <h5>Ep ';
         echo ($stutsUser == 1) ? '<a href="admin/ep/create_new_ep.php?id_artista=' . $idArt . '&nome_artista=' . $dadosArtista["NomeArtista"] . '">+</a>'
         : '';
         echo '
-        </h3>
+        </h5>
         <div class ="row">';
           
 
@@ -103,7 +103,7 @@ echo $head;
 
 
           echo '
-             <div class="col-lg-4">
+             <div class="col-6 col-md-6">
                 <div> 
                   <a href="list_music_ep.php?id_ep=' . $ep->current()->idEp . '&nome_ep='
                         . $ep->current()->NomeEp . '&nome_artista=' .  $dadosArtista["NomeArtista"] . '&id_artista=' . $idArt . '" >

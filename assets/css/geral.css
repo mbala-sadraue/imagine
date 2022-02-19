@@ -34,7 +34,7 @@ box-shadow: 0 0px 10px rgba(0, 0, 0, 0.25);
 }
 .caption-img{
 font-size: 15px !important;
-color: #8b2323;
+color: #000;
 margin: 9px 0px;
 }
 a{
@@ -43,6 +43,37 @@ a{
 
 
 /*HOME*/
+
+/* Depois nav bar */
+#depois-nav{
+    padding-top: 100px;
+    padding-bottom: 50px;
+    width: 100%;
+    background-color: #000;
+    background-image: linear-gradient(to bottom, rgba(31, 69, 163, 1), rgba(214, 28, 105, 0.7));
+}
+/* Equipamentos */
+#equipamentos{
+    width: 100%;
+    /* background-image: linear-gradient(to left, rgb(56, 128, 161), rgb(146, 136, 76)); */
+}
+/* Estudio */
+#estudio{
+    width: 100%;
+}
+/* Musicas populares */
+#musicas-populares{
+    width: 100%;
+}
+/* Musicas recentes */
+#musicas-recentes{
+    width: 100%;
+}
+/* Musicas mais baixadas */
+#musicas-mais-baixadas{
+    width: 100%;
+}
+
 
 /*IMAGEM DE ESTUDIO */
 
@@ -92,4 +123,39 @@ a{
 /*ESTILO DE AUDIO*/
 #audio{
     height: 30px;
+}
+
+
+/* PAGINA ARTISTAS */
+#todos-artistas{
+    padding-top: 100px;
+    padding-bottom: 50px;
+    width: 100%;
+}
+/* PAGINA MUSICAS */
+#todas-musicas{
+    padding-top: 100px;
+    padding-bottom: 50px;
+    width: 100%;
+}
+/* PAGINA INFORMACOES */
+#informacoes{
+	padding-top: 100px;
+    padding-bottom: 100px;
+    width: 100%;
+    background-color: #000;
+    background-image: linear-gradient(to left, rgba(31, 69, 163, 1), rgba(214, 28, 105, 1));
+}
+
+
+
+/* RESPONSIVE */
+/*Dispositivos extra small (telefones em modo retrato, com menos de 576px)*/
+@media (max-width: 575.98px) { 
+    .controlAudio{
+        max-width: 170px;
+    }
+    .controlAudioPerfil{
+        max-width: 250px;
+    }
 }

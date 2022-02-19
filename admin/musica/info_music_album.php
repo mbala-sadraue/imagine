@@ -28,8 +28,8 @@ echo $head;
     {  
 
   echo'
-  
-        <div class=" text-center">
+          
+  <div class=" text-center">
           <img src="../../photos/capas/'.$dadosMusica["Imagem"].'" alt ="'.$dadosMusica["Titulo"].'" class="img-fluid">
         </div>
       <table>

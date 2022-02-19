@@ -39,6 +39,29 @@ class Musica extends Connected
     }
   }
 
+//CADASTRA MUSICA
+
+  public function updadeMusica($dados = array())
+  {
+    try {
+
+      $cadastra = $this->con->prepare("UPDATE musica SET  `Titulo` = ?,`Musica`=?,`Imagem`=?,`Album`=?,`Ep`=?,`DUpdated`=? WHERE `idMusica`= ?");
+
+      foreach ($dados as $k => $v) {
+       $cadastra->bindValue($k, $v);
+      }
+      $cadastra->execute();
+
+      if ($cadastra->rowCount() == 1) {
+        header("location:../../");
+      } else {
+          header("location:../../");
+      }
+    
+    } catch (PDOException $e) {
+      echo "Erro " . $e->getMessage();
+    }
+  }
 
   // LISTA A MUSICA PELO SEU ID
 
@@ -80,6 +103,8 @@ class Musica extends Connected
           $dados = $contar->fetch(PDO::FETCH_ASSOC);
           return $dados["COUNT(*)"];
 
+        }else{
+          return 0;
         }
 
     }catch(PDOException $e){
@@ -215,25 +240,49 @@ public function buscaAjaxMusica($busca,$limite)
       $buscar->bindValue(1, $b);
       $buscar->bindValue(2, $limite,PDO::PARAM_INT);
       $buscar->execute();
-
+      
+      $continue = true;
       if ($buscar->rowCount() > 0) {
 
         $dados = $buscar->fetchAll(PDO::FETCH_OBJ);
         return $dados;
-      }else{
 
-        $buscar   = $this->con->prepare("SELECT * FROM artistas  INNER JOIN albums ON artistas.idArt
+        $continue = false;
+
+      }else if($continue == true){
+
+          $buscar   = $this->con->prepare("SELECT * FROM artistas  INNER JOIN albums ON artistas.idArt
         = albums.idArtista JOIN musica ON musica.Album = albums.idAlbum WHERE NomeArtista LIKE ? LIMIT ?");
         $buscar->bindValue(1, $b);
         $buscar->bindValue(2, $limite,PDO::PARAM_INT);
         $buscar->execute();
         if ($buscar->rowCount() > 0) {
-        $dados = $buscar->fetchAll(PDO::FETCH_OBJ);
-        return $dados;
-        }else{
-          return 0;
-        }
+          $dados = $buscar->fetchAll(PDO::FETCH_OBJ);
+          return $dados;
+
+        $continue = false;
+        }else if($continue == true){
+
+           $buscar   = $this->con->prepare("SELECT * FROM musica INNER JOIN ep ON musica.ep = ep.idEp JOIN artistas ON artistas.idArt = ep.idArtista   WHERE Titulo LIKE ? LIMIT ?");
+            $buscar->bindValue(1, $b);
+            $buscar->bindValue(2, $limite,PDO::PARAM_INT);
+            $buscar->execute();
+            
+            $continue = true;
+            if ($buscar->rowCount() > 0) {
+
+              $dados = $buscar->fetchAll(PDO::FETCH_OBJ);
+              return $dados;
+
+              $continue = false;
+
+            }
+
+      }else{
+
+        
       }
+    }
     } catch (PDOException $e) {
       echo "Erro " . $e->getMessage();
     }
@@ -242,6 +291,7 @@ public function buscaAjaxMusica($busca,$limite)
 // CONTAR QUANTIDATE DE MUSICAS 
   public function contarMusica()
   {
+
     try {
       $contar   = $this->con->prepare("SELECT COUNT(*) FROM `musica`");
       $contar->execute();
@@ -254,7 +304,7 @@ public function buscaAjaxMusica($busca,$limite)
         return 0;
       }
     } catch (PDOException $e) {
-      echo "Erro " . $e->getMessage();
+      echo "Erro " . $e->getCode();
     }
   }
 
@@ -268,18 +318,17 @@ public function buscaAjaxMusica($busca,$limite)
       $contar->bindValue(1, $inicio,PDO::PARAM_INT);
       $contar->bindValue(2, $por_pagina,PDO::PARAM_INT);
       $contar->execute();
-      if (
-        $contar->rowCount() > 0
-      ) {
-
+      if ($contar->rowCount() > 0) {
         $dados = $contar->fetchAll(PDO::FETCH_OBJ);
         return $dados;
       } else {
         return 0;
       }
+
     } catch (PDOException $e) {
-      echo "Erro " . $e->getMessage();
+      //echo "Erro " . $e->getCode();
     }
+
   }
 
 
@@ -372,8 +421,10 @@ public function buscaAjaxMusica($busca,$limite)
              echo '
 
               <div class="col-md-2 text-center mt-2 ">
+               <a href="perfil_musica.php?id_musica='.$dadosM["idMusica"].'">
                 <img class="img-fluid rounded" src="photos/musica/'.$dadosM["Imagem"].'" width="400" height="300" alt="" role="img">
-                <p class="fw-light fs-4">Yola araujo</p>
+                </a>
+                <p class="fw-light fs-4">'.$dadosM['Titulo'].'</p>
               </div>
              ';
             }else{
@@ -389,7 +440,9 @@ public function buscaAjaxMusica($busca,$limite)
         echo "Erro ".$e->getMessage();
     }
 
-  }   
+  } 
+
+
 
 }
 ?>

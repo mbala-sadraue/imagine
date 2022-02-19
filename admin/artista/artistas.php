@@ -33,11 +33,11 @@ $depois = $pg +1;
  $dadosArtistas = $artista->listarArtista($inicio,$por_pagina);
 echo $head;
 echo '
-<div class="container">
+<div class="container py-4">
   <div class="row">
     <div class="col-lg-12">
       <h2>Artistas</h2>
-     <div class="row row-cols-2 row-cols-md-4">
+     <div class="row row-cols-2">
       ';
       if($dadosArtistas)
       {
@@ -51,7 +51,7 @@ echo '
             $countAlbum = $album->contarAlbumArtista($idArt);
             $countEp    = $ep->contarEpArtista($idArt);
           echo '
-                <div class="col-2 text-center mt-2 box-img">
+                <div class="col-lg-2 text-center mt-2 box-img">
                   <a href="show_artista.php?id_artista='. $dadoArtista->current()->idArt.'">
                   <img class="img-fluid rounded b-img " src="../../photos/capas/'.$dadoArtista->current()->ArtistaImagem.'" width="400" height="300" alt="" role="img">
                   <p class="caption-img">'. $dadoArtista->current()->NomeArtista.'</p>

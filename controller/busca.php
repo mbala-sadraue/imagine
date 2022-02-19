@@ -16,23 +16,20 @@
       if(isset($dadoPesquisa->current()->NomeArtista))
       {
 
-
-        
-
         while($dadoPesquisa->valid()){
 
           echo '
-               <li class=""> 
+               <li > 
                <a href="perfil_musica.php?id_musica=' . $dadoPesquisa->current()->idMusica . '">
 
-               <span>
-                 <span>
-                  <img src="photos/capas/'.$dadoPesquisa->current()->ArtistaImagem.'"/>
-                 </span>
-                  '. $dadoPesquisa->current()->NomeArtista.'
-                 </span> 
-               <span>'.$dadoPesquisa->current()->Titulo.'</span>
-               </a>
+                <span class="text-dark">
+                  <span>
+                    <img class="rounded" src="photos/capas/'.$dadoPesquisa->current()->ArtistaImagem.'" role="img"/>
+                  </span>
+                    '. $dadoPesquisa->current()->NomeArtista.'
+                  </span> 
+                <span class="text-dark">'.$dadoPesquisa->current()->Titulo.'</span>
+                </a>
                </li>
           ';
 

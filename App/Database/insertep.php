@@ -27,6 +27,8 @@ if(isset($_POST["acao"]) && (isset($_POST["nameEp"]) && $_POST["nameEp"] != null
 		}
 	} elseif ($_POST["foto_ep"]) {
 		$novaFoto = $_POST["foto_ep"];
+	}else{
+			$novaFoto = "photo_padrao_ep.jpg";
 	}
   //RECOLHENDO OS DADOS
 

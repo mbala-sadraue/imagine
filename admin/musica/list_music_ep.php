@@ -45,7 +45,7 @@ echo $head;
       <h3 class="text-center"> '.$nomeEp.' de  '.$nomeArtista.'</h3>
       <a href="create_new_music_ep.php?id_ep=' . $idEp . '&nomeEp=' . $nomeEp . '
 					&id_artista=' . $idArt . '&nome_artista=' . $nomeArtista . '" >
-          + nova musica
+          + Nova música
       </a>';
 	
       if($dadosMusicas){
@@ -54,9 +54,9 @@ echo $head;
       <table class="table">
       	<thead>
       		<tr>	
-      			<td>Musica</td>
-            <td>Baixa</td>
-      			<td>Download</td>
+      			<td>Música</td>
+            <td>Ouvir</td>
+      			<td>Baixar</td>
 
       		</tr>
       	</thead>
@@ -68,10 +68,11 @@ echo $head;
 
   echo '
   		<tr>
-  			<td><a href="info_music_album.php?id_musica='.$dadoMusica->current()->idMusica.'&id_album='. $dadoMusica->current()->Album.'
-        ">'.$dadoMusica->current()->Titulo.'</a></td>
-        <td><audio src="musicas/'.$dadoMusica->current()->Musica.'" controls>Ouvir</audio></td>
-  			<td><a href="musicas/'.$dadoMusica->current()->Musica.'" download="">Baixa</a></td>
+      <!-- href="info_music_album.php?id_musica='.$dadoMusica->current()->idMusica.'&id_album='. $dadoMusica->current()->Album.'
+        " -->
+  			<td><a>'.$dadoMusica->current()->Titulo.'</a></td>
+        <td><audio src="../../musicas/'.$dadoMusica->current()->Musica.'" controls>Ouvir</audio></td>
+  			<td><a href="musicas/'.$dadoMusica->current()->Musica.'" download="">Baixar</a></td>
   		</tr>
       	';
       	 	$dadoMusica->next();
@@ -82,7 +83,7 @@ echo'
     }else{
       if($stutsUser==1){
 
-            echo '<p> Ep <b/>'.$nomeEp.'</b> de <b>'.$nomeEp. '</b> não tem musica. <a href="create_new_music_ep.php?id_ep='.$idEp. '&nomeEp='.$nomeEp.'&id_artista='.$idArt.'&nome_artista='.$nomeArtista.'" >+ nova musica</a></p>';
+            echo '<p> Ep <b/>'.$nomeEp.'</b> de <b>'.$nomeEp. '</b> não tem musica. <a href="create_new_music_ep.php?id_ep='.$idEp. '&nomeEp='.$nomeEp.'&id_artista='.$idArt.'&nome_artista='.$nomeArtista.'" >+ Nova música</a></p>';
           }
     }
 echo'

@@ -2,7 +2,8 @@
 require_once "controller/auth.php";
 require_once "App/Models/categoria.php";
 
-$title = "categorias";
+$title = "Categorias";
+$activoCat = "active";
 require_once "layout/layout.php";
 $categorias  = new Categoria();
 $dados =  $categorias->listarCategoria();
@@ -11,7 +12,7 @@ echo $head;
 
 echo
 '
-<div class="container">
+<div class="container py-4">
 	<div class="page-head my-2">
 		<h2>Categorias</h2>
 	</div>
@@ -22,7 +23,7 @@ echo
 		while($categoria->valid())
 		{
 	    echo'<tr>
-				<td>'.$categoria->current()->NomeCategoria.'</td>
+				<td><a class="text-dark" href="artista_categoria.php?idCat='.$categoria->current()->idCat.'">'.$categoria->current()->NomeCategoria.'</a></td>
 			</tr>';
 			$categoria->next();
 		}

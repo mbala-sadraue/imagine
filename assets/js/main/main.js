@@ -29,7 +29,6 @@ $(function(){
 	$("#download").click(function(){
 
 		var a = $(this).attr("musica");
-		alert(a)
 		$.ajax({
 				url: "controller/busca.php",
 				method: "POST",

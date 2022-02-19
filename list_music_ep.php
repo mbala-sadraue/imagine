@@ -39,13 +39,13 @@ echo $head;
 
 
   echo '
-  <div class="container">
+  <div class="container py-4">
   <div class="row">
-    <div class="col-lg-8 offset-lg-2">
+    <div class="col-lg-12 offset-lg-12 ">
       <h3 class="text-center"> '.$nomeEp.' de  '.$nomeArtista.'</h3>';
 	 if ($stutsUser == 1) {
      echo '<a href="admin/musica/create_new_music_ep.php?id_ep=' . $idEp . '&nomeEp=' . $nomeEp . '
-					&id_artista=' . $idArt . '&nome_artista=' . $nomeArtista . '" >+ nova musica</a>';
+					&id_artista=' . $idArt . '&nome_artista=' . $nomeArtista . '" >+ Nova musica</a>';
 		}
       if($dadosMusicas){
       echo '
@@ -53,10 +53,9 @@ echo $head;
       <table class="table">
       	<thead>
       		<tr>	
-      			<td>Musica</td>
-            <td>Baixa</td>
-      			<td>Download</td>
-
+            <td>Música</td>
+            <td>Ouvir</td>
+            <td>Baixar</td>
       		</tr>
       	</thead>
 
@@ -67,10 +66,11 @@ echo $head;
 
   echo '
   		<tr>
-  			<td><a href="info_music_album.php?id_musica='.$dadoMusica->current()->idMusica.'&id_album='. $dadoMusica->current()->Album.'
-        ">'.$dadoMusica->current()->Titulo.'</a></td>
-        <td><audio src="musicas/'.$dadoMusica->current()->Musica.'" controls>Ouvir</audio></td>
-  			<td><a href="musicas/'.$dadoMusica->current()->Musica.'" download="">Baixa</a></td>
+        <!-- href="info_music_album.php?id_musica='.$dadoMusica->current()->idMusica.'&id_album='. $dadoMusica->current()->Album.'
+        " -->
+  			<td><a>'.$dadoMusica->current()->Titulo.'</a></td>
+        <td><audio class="controlAudio" src="musicas/'.$dadoMusica->current()->Musica.'" controls>Ouvir</audio></td>
+  			<td><a href="musicas/'.$dadoMusica->current()->Musica.'"id="download" download="">Baixar</a></td>
   		</tr>
       	';
       	 	$dadoMusica->next();
@@ -81,7 +81,7 @@ echo'
     }else{
       if($stutsUser==1){
 
-            echo '<p> Ep <b/>'.$nomeAlbum.'</b> de <b>'.$nomeArtista.'</b> não tem musica. <a href="admin/musica/create_new_music.php?id_album='.$idAlbum.'&nomeAlbum='.$nomeAlbum.'&id_artista='.$idArt.'&nome_artista='.$nomeArtista.'" >+ nova musica</a></p>';
+            echo '<p> Ep <b>'.$nomeAlbum.'</b> de <b>'.$nomeArtista.'</b> não tem musica. <a href="admin/musica/create_new_music.php?id_album='.$idAlbum.'&nomeAlbum='.$nomeAlbum.'&id_artista='.$idArt.'&nome_artista='.$nomeArtista.'" >+ nova musica</a></p>';
           }
     }
 echo'
@@ -108,3 +108,5 @@ echo $footer;
 }
 
  ?>
+<script type="text/javascript" src="assets/js/main/jquery.js"></script>
+<script type="text/javascript" src="assets/js/main/main.js"></script>

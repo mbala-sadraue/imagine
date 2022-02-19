@@ -2,6 +2,7 @@
 require_once "controller/auth.php";
 
 $title = "Musica";
+$activoMus = "active";
 require_once "layout/layout.php";
 require_once "App/Models/musica.php";
 $musica = new Musica();
@@ -33,22 +34,22 @@ echo $head;
 
 echo
 '
-<div class="container">
+<div class="container py-4">
     <div class="">
-      <p class="text-dark fs-1 fw-bold">Músicas</p>
+      <h1 class="text-dark ">Músicas</h1>
     </div>
-    <div class="row row-cols-2">';
+    <div class="row">';
 
       if($dadosMusica){
         $dadoMusica = new ArrayIterator($dadosMusica);
         while ($dadoMusica->valid()) {
  
         echo'
-      <div class="col-md-2 text-center mt-2">
+      <div class="col-6 col-md-2 text-center mt-2">
         <a href="perfil_musica.php?id_musica='.$dadoMusica->current()->idMusica.'"> 
         <img class="img-fluid rounded" src="photos/musica/'.$dadoMusica->current()->Imagem.'" width="400" height="300" alt="" role="img">
         </a>
-        <p class="fw-light fs-5">'.$dadoMusica->current()->Titulo.'</p>
+        <p class="fw-light fs-6 mt-1">'.$dadoMusica->current()->Titulo.'</p>
       </div>
           ';
           $dadoMusica->next();

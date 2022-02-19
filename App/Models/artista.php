@@ -33,7 +33,7 @@
 					}
 				}
   		} catch (PDOException $e){
-  			echo "Erro ".$e->getMessage();
+  			//echo "Erro ".$e->getMessage();
   			
   		}
   	}
@@ -54,7 +54,27 @@
 				}
 
 			}catch(PDOException $e){
-				echo "Erro ".$e->getMessage();
+				//echo "Erro ".$e->getMessage();
+			}
+  	}
+  		public function listarArtistaCategoria($idCat,$inicio,$por_pagina)
+  	{
+  		try{
+
+				$listar = $this->con->prepare("SELECT * FROM artistas WHERE idCat = ? ORDER BY NomeArtista LIMIT ?,? ");
+				$listar->bindValue(1, $idCat);
+				$listar->bindValue(2, $inicio, PDO::PARAM_INT);
+				$listar->bindValue(3, $por_pagina,PDO::PARAM_INT);
+				$listar->execute();
+				if($listar->rowCount()>0){
+					$dados = $listar->fetchAll(PDO::FETCH_OBJ);
+					return $dados;
+				}else{
+					return 0;
+				}
+
+			}catch(PDOException $e){
+				//echo "Erro ".$e->getMessage();
 			}
   	}
 

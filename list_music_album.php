@@ -39,55 +39,56 @@ echo $head;
 
 
   echo '
-  <div class="container">
-  <div class="row">
-    <div class="col-lg-8 offset-lg-2">
-      <h3 class="text-center"> '.$nomeAlbum.' de  '.$nomeArtista.'</h3>';
-	 if ($stutsUser == 1) {
-     echo '<a href="admin/musica/create_new_music.php?id_album=' . $idAlbum . '&nomeAlbum=' . $nomeAlbum . '
-					&id_artista=' . $idArt . '&nome_artista=' . $nomeArtista . '" >+ nova musica</a>';
-		}
-      if($dadosMusicas){
-      echo '
+  <div class="container py-4">
+    <div class="row">
+      <div class="col">
+        <h3 class="text-center"> '.$nomeAlbum.' de  '.$nomeArtista.'</h3>';
+    if ($stutsUser == 1) {
+      echo '<a href="admin/musica/create_new_music.php?id_album=' . $idAlbum . '&nomeAlbum=' . $nomeAlbum . '
+            &id_artista=' . $idArt . '&nome_artista=' . $nomeArtista . '" >+ nova musica</a>';
+      }
+        if($dadosMusicas){
+        echo '
 
-      <table class="table">
-      	<thead>
-      		<tr>	
-      			<td>Musica</td>
-            <td>Ouvir</td>
-      			<td>Baixar</td>
+        <table class="table">
+          <thead>
+            <tr>	
+              <td>Música</td>
+              <td>Ouvir</td>
+              <td>Baixar</td>
 
-      		</tr>
-      	</thead>
+            </tr>
+          </thead>
 
-      	<tbody>';
-      	$dadoMusica = new arrayIterator($dadosMusicas);
-      	 while($dadoMusica->valid())
-      	 {
+          <tbody>';
+          $dadoMusica = new arrayIterator($dadosMusicas);
+          while($dadoMusica->valid())
+          {
 
-  echo '
-  		<tr>
-  			<td><a href="info_music_album.php?id_musica='.$dadoMusica->current()->idMusica.'&id_album='. $dadoMusica->current()->Album.'
-        ">'.$dadoMusica->current()->Titulo.'</a></td>
-        <td><audio src="musicas/'.$dadoMusica->current()->Musica.'" controls >Ouvir</audio></td>
-  			<td><a href="musicas/'.$dadoMusica->current()->Musica.'"id="download" musica="'.$dadoMusica->current()->idMusica.'" download="">Baixar</a></td>
-  		</tr>
-      	';
-      	 	$dadoMusica->next();
-      	 }
-echo'
-      	</tbody>
-      </table>';
-    }else{
-      if($stutsUser==1){
-
-            echo '<p> Album <b/>'.$nomeAlbum.'</b> de <b>'.$nomeArtista.'</b> não tem musica. <a href="admin/musica/create_new_music.php?id_album='.$idAlbum.'&nomeAlbum='.$nomeAlbum.'&id_artista='.$idArt.'&nome_artista='.$nomeArtista.'" >+ nova musica</a></p>';
+    echo '
+        <tr>
+          <!-- href="info_music_album.php?id_musica='.$dadoMusica->current()->idMusica.'&id_album='. $dadoMusica->current()->Album.'
+          " -->
+          <td><a>'.$dadoMusica->current()->Titulo.'</a></td>
+          <td><audio class="controlAudio" src="musicas/'.$dadoMusica->current()->Musica.'" controls >Ouvir</audio></td>
+          <td><a href="musicas/'.$dadoMusica->current()->Musica.'"id="download" musica="'.$dadoMusica->current()->idMusica.'" download="">Baixar</a></td>
+        </tr>
+          ';
+            $dadoMusica->next();
           }
-    }
-echo'
+  echo'
+          </tbody>
+        </table>';
+      }else{
+        if($stutsUser==1){
 
+              echo '<p> Album <b/>'.$nomeAlbum.'</b> de <b>'.$nomeArtista.'</b> não tem musica. <a href="admin/musica/create_new_music.php?id_album='.$idAlbum.'&nomeAlbum='.$nomeAlbum.'&id_artista='.$idArt.'&nome_artista='.$nomeArtista.'" >+ Nova musica</a></p>';
+            }
+      }
+  echo'
+
+      </div>
     </div>
-  </div>
 </div>
 
 

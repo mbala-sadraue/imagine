@@ -49,11 +49,11 @@ if(isset($_FILES["arq_musica_foto"]) && $_FILES["arq_musica_foto"]["tmp_name"] !
 		if (move_uploaded_file($arq_tmp, $_['path'].$novaFoto)) {
 			
 		}
+}elseif(isset($_POST['musica_foto_post']) && $_POST['musica_foto_post'] != null){
+	$novaFoto = $_POST['musica_foto_post'];
 }else{
-	
+	$novaFoto = "photo_padrao.png";
 }
-
-
   if(isset($_FILES["arq_musica_audio"])){
   	$arq_tmp =$_FILES["arq_musica_audio"]["tmp_name"];
   	$dadosOriginalMusica = $_FILES["arq_musica_audio"];
@@ -69,10 +69,12 @@ if(isset($_FILES["arq_musica_foto"]) && $_FILES["arq_musica_foto"]["tmp_name"] !
 			mkdir($_['path'], 0777, true);
 		}
 
- $_["path"];
-		move_uploaded_file($arq_tmp, $_['path'].$novoMusica);
-		$musicaFinal = $pasta.$novoMusica;
+	 $_["path"];
+			move_uploaded_file($arq_tmp, $_['path'].$novoMusica);
+			$musicaFinal = $pasta.$novoMusica;
 		
+  }elseif(isset($_POST['arq_musica_audio_post']) && $_POST['arq_musica_audio_post'] != null){
+  	$novoMusica 	= 	$_POST['arq_musica_audio_post'];
   }
 
 	/// CADASTRA MUSICA
@@ -88,8 +90,26 @@ if(isset($_FILES["arq_musica_foto"]) && $_FILES["arq_musica_foto"]["tmp_name"] !
 		//`idMusica`, `Titulo`, `Musica`, `Imagem`, `Album`, `Ep`, `id_user`, `DCreated`, `DUpdated`
 		$dados = array(1 => $tituloMusica, 2 => $musicaFinal, $novaFoto, $idAlbum, $ep, $idUser, $datas, $datas);
 		$musica->cadastraMusica($dados, $tituloMusica);
-	}
-header("location:../../");
+
+	}elseif(isset($_POST["acao"] ) && $_POST["acao"] == "editarMusica"){
+		$idMusica = $_POST['id_musica'];
+
+		if ((isset($_POST["idAlbum"]) && $_POST["idAlbum"] > 0)) {
+			$idAlbum  = $_POST["idAlbum"];
+			$ep =  null;
+		}
+			if ((isset($_POST["idEp"]) && $_POST["idEp"] > 0)) {
+				$ep  = $_POST["idEp"];
+				$idAlbum   =  null;
+			}
+		// `Titulo`, `Musica`, `Imagem`,`Album`, `Ep`, `DUpdated`,`idMusica`
+		$dados = array(1 => $tituloMusica, 2=> $musicaFinal,$novaFoto,$idAlbum,$ep,$datas,$idMusica);
+		$musica->updadeMusica($dados);
+
+		 //echo "Vamos editar musica $idMusica";
+	}else{
+  header("location:../../");
+}
 
 }else{
   header("location:../../");

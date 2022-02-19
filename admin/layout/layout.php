@@ -2,13 +2,13 @@
 $url = "localhost/imagine/admin/";
 
 if ($stutsUser == 1) {
-  $user = '<li class=""nav-item > <a href="" class="nav-link">'.$nomeUser.'</a></li>';
+  $user = '<li class="nav-item" > <a class="nav-link fw-bold">'.$nomeUser.'</a></li>';
   $yC = '
     <li class="nav-item">
             <a class="nav-link" href="http://'.$url.'categoria/category.php">Categoria</a>
           </li>
     <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle " data-bs-toggle="dropdown">cadastra</a>
+      <a href="" class="nav-link dropdown-toggle " data-bs-toggle="dropdown">Cadastra</a>
       <ul class="dropdown-menu">
         <li class="nav-item"><a href="http://' . $url . 'categoria/new_categoria.php" class="nav-link">Categoria</a></li>
           <li class="nav-item"><a href="http://' . $url . 'artista/new_artista.php" class="nav-link">Artista</a></li>
