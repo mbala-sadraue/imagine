@@ -56,8 +56,8 @@ echo '
         </div>
          <div class="my-2">
           <label for="" class="form-label">Música</label>
-          <input type="file" class="form-control" name="arq_musica_audio" value="'.$dadosMusica['Musica'].'"title="carrege a audio">
-          <input type="hidden" name="arq_musica_audio_post" value="'.$dadosMusica['Musica'].'" required />
+          <input type="file" class="form-control" name="arq_musica_audio" value="" title="carrege a audio">
+          <input type="hidden" name="arq_musica_audio_post" value="'.$dadosMusica["Musica"].'" required />
         </div>
         <div class="my-2">
           <label for="" class="form-label">imagem</label>

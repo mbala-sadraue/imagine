@@ -54,17 +54,20 @@ if(isset($_FILES["arq_musica_foto"]) && $_FILES["arq_musica_foto"]["tmp_name"] !
 }else{
 	$novaFoto = "photo_padrao.png";
 }
-  if(isset($_FILES["arq_musica_audio"])){
+  if(isset($_FILES["arq_musica_audio"]) && $_FILES["arq_musica_audio"]['name'] != null){
   	$arq_tmp =$_FILES["arq_musica_audio"]["tmp_name"];
   	$dadosOriginalMusica = $_FILES["arq_musica_audio"];
 
   	//OBTSER A EXTENSÃO DE ARQUIVO
   	$extensao =  pathinfo($dadosOriginalMusica["name"],PATHINFO_EXTENSION);
 
-  	$novoMusica = $tituloMusica.".".$extensao;
+  	$novoMusica = uniqid().".".$extensao;
   	$pasta =  $categoria . '/' . $artista . '/' . $subCat . '/';
+
 		define('UPLOAD_DIRECTORY', __DIR__ .'../../../musicas/'.$pasta);
+
 			$_['path'] = UPLOAD_DIRECTORY;
+
 		if(!is_dir($_['path'])){	
 			mkdir($_['path'], 0777, true);
 		}
@@ -73,10 +76,10 @@ if(isset($_FILES["arq_musica_foto"]) && $_FILES["arq_musica_foto"]["tmp_name"] !
 			move_uploaded_file($arq_tmp, $_['path'].$novoMusica);
 			$musicaFinal = $pasta.$novoMusica;
 		
-  }elseif(isset($_POST['arq_musica_audio_post']) && $_POST['arq_musica_audio_post'] != null){
-  	$novoMusica 	= 	$_POST['arq_musica_audio_post'];
+  }else if(isset($_POST['arq_musica_audio_post']) && $_POST['arq_musica_audio_post'] != null){
+  	$musicaFinal 	= 	$_POST['arq_musica_audio_post'];
   }
-
+echo $_POST['arq_musica_audio_post'];
 	/// CADASTRA MUSICA
 	if ($_POST["acao"] == "cadastraMusica") {
 		if ((isset($_POST["idAlbum"]) && $_POST["idAlbum"] > 0)) {
@@ -102,7 +105,7 @@ if(isset($_FILES["arq_musica_foto"]) && $_FILES["arq_musica_foto"]["tmp_name"] !
 				$ep  = $_POST["idEp"];
 				$idAlbum   =  null;
 			}
-		// `Titulo`, `Musica`, `Imagem`,`Album`, `Ep`, `DUpdated`,`idMusica`
+		 //`Titulo`, `Musica`, `Imagem`,`Album`, `Ep`, `DUpdated`,`idMusica`
 		$dados = array(1 => $tituloMusica, 2=> $musicaFinal,$novaFoto,$idAlbum,$ep,$datas,$idMusica);
 		$musica->updadeMusica($dados);
 
